@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pele+ | Triagem inteligente da pele</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <span>+</span>
+                </div>
+
+                <div>
+                    <h1>Pele<span>+</span></h1>
+                    <small>TECNOLOGIA QUE CUIDA</small>
+                </div>
+
+            </div>
+
+            <nav class="navigation">
+
+                <button class="nav-item active" data-page="dashboard">
+                    <span>⌂</span>
+                    <label>Início</label>
+                </button>
+
+                <button class="nav-item" data-page="patients">
+                    <span>♙</span>
+                    <label>Pacientes</label>
+                </button>
+
+                <button class="nav-item" data-page="evaluations">
+                    <span>⌁</span>
+                    <label>Avaliações</label>
+                </button>
+
+                <button class="nav-item" data-page="reports">
+                    <span>▥</span>
+                    <label>Relatórios</label>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button class="nav-item" data-page="settings">
+                    <span>⚙</span>
+                    <label>Configurações</label>
+                </button>
+
+                <div class="professional-card">
+
+                    <div class="profile-avatar">
+                        DR
+                    </div>
+
+                    <div>
+                        <strong>Profissional</strong>
+                        <small>Atendimento</small>
+                    </div>
+
+                    <span>⋮</span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div class="mobile-logo">
+                    Pele<span>+</span>
+                </div>
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input type="text" placeholder="Buscar paciente ou avaliação...">
+
+                </div>
+
+                <div class="top-actions">
+
+                    <button class="notification-button">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-info">
+
+                        <div class="profile-avatar small">
+                            DR
+                        </div>
+
+                        <div>
+                            <strong>Profissional</strong>
+                            <small>Atendimento</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+
+            <section class="page active-page" id="dashboard">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <p class="greeting">Olá, profissional</p>
+
+                        <h2>Visão geral</h2>
+
+                        <p class="subtitle">
+                            Acompanhe suas avaliações e pacientes em um só lugar.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-button" onclick="openEvaluation()">
+
+                        <span>＋</span>
+
+                        Nova avaliação
+
+                    </button>
+
+                </div>
+
+
+                <!-- METRICS -->
+
+                <div class="metrics-grid">
+
+                    <div class="metric-card">
+
+                        <div class="metric-icon green">
+                            ♙
+                        </div>
+
+                        <div>
+
+                            <span>Pacientes acompanhados</span>
+
+                            <strong>128</strong>
+
+                            <small class="positive">
+                                ↑ 12% este mês
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-icon blue">
+                            ⌁
+                        </div>
+
+                        <div>
+
+                            <span>Avaliações realizadas</span>
+
+                            <strong>342</strong>
+
+                            <small class="positive">
+                                ↑ 18% este mês
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-icon orange">
+                            !
+                        </div>
+
+                        <div>
+
+                            <span>Casos para acompanhamento</span>
+
+                            <strong>14</strong>
+
+                            <small class="warning">
+                                Requerem atenção
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-icon purple">
+                            ◷
+                        </div>
+
+                        <div>
+
+                            <span>Retornos previstos</span>
+
+                            <strong>09</strong>
+
+                            <small>
+                                Próximos 7 dias
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTION -->
+
+                <div class="section-title">
+
+                    <h3>Acesso rápido</h3>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <button onclick="openEvaluation()" class="quick-card">
+
+                        <div class="quick-icon">
+                            ◎
+                        </div>
+
+                        <div>
+
+                            <strong>Nova avaliação</strong>
+
+                            <p>Analise uma nova lesão</p>
+
+                        </div>
+
+                        <span>→</span>
+
+                    </button>
+
+
+                    <button onclick="changePage('patients')" class="quick-card">
+
+                        <div class="quick-icon">
+                            ♙
+                        </div>
+
+                        <div>
+
+                            <strong>Adicionar paciente</strong>
+
+                            <p>Cadastre um novo paciente</p>
+
+                        </div>
+
+                        <span>→</span>
+
+                    </button>
+
+
+                    <button onclick="changePage('reports')" class="quick-card">
+
+                        <div class="quick-icon">
+                            ▥
+                        </div>
+
+                        <div>
+
+                            <strong>Ver relatórios</strong>
+
+                            <p>Acompanhe seus dados</p>
+
+                        </div>
+
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- RECENT PATIENTS -->
+
+                <div class="content-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>Pacientes recentes</h3>
+
+                                <p>Últimas avaliações realizadas</p>
+
+                            </div>
+
+                            <button onclick="changePage('patients')">
+                                Ver todos →
+                            </button>
+
+                        </div>
+
+
+                        <div class="patient-list">
+
+                            <div class="patient-row">
+
+                                <div class="patient-avatar">
+                                    M
+                                </div>
+
+                                <div class="patient-data">
+
+                                    <strong>Maria da Silva</strong>
+
+                                    <small>Última avaliação: 23/05/2026</small>
+
+                                </div>
+
+                                <span class="risk low">
+                                    Risco baixo
+                                </span>
+
+                            </div>
+
+
+                            <div class="patient-row">
+
+                                <div class="patient-avatar">
+                                    J
+                                </div>
+
+                                <div class="patient-data">
+
+                                    <strong>João Pereira</strong>
+
+                                    <small>Última avaliação: 20/05/2026</small>
+
+                                </div>
+
+                                <span class="risk medium">
+                                    Risco moderado
+                                </span>
+
+                            </div>
+
+
+                            <div class="patient-row">
+
+                                <div class="patient-avatar">
+                                    A
+                                </div>
+
+                                <div class="patient-data">
+
+                                    <strong>Ana Souza</strong>
+
+                                    <small>Última avaliação: 18/05/2026</small>
+
+                                </div>
+
+                                <span class="risk high">
+                                    Risco alto
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVITY -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>Atividade recente</h3>
+
+                                <p>Últimas movimentações</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-list">
+
+                            <div class="activity-item">
+
+                                <div class="activity-dot green-dot"></div>
+
+                                <div>
+
+                                    <strong>Nova avaliação concluída</strong>
+
+                                    <small>Maria da Silva · há 2 horas</small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-dot orange-dot"></div>
+
+                                <div>
+
+                                    <strong>Retorno recomendado</strong>
+
+                                    <small>João Pereira · ontem</small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-dot blue-dot"></div>
+
+                                <div>
+
+                                    <strong>Novo paciente cadastrado</strong>
+
+                                    <small>Lucas Oliveira · há 2 dias</small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PATIENTS -->
+
+            <section class="page" id="patients">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <p class="greeting">Gestão clínica</p>
+
+                        <h2>Pacientes</h2>
+
+                        <p class="subtitle">
+                            Gerencie e acompanhe o histórico dos seus pacientes.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-button">
+                        ＋ Novo paciente
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+
+                        <input type="text" placeholder="Buscar paciente...">
+
+                        <select>
+
+                            <option>Todos os pacientes</option>
+
+                            <option>Risco baixo</option>
+
+                            <option>Risco moderado</option>
+
+                            <option>Risco alto</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="patient-table">
+
+                        <div class="table-header">
+
+                            <span>Paciente</span>
+
+                            <span>Última avaliação</span>
+
+                            <span>Status</span>
+
+                            <span>Ações</span>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <div class="patient-cell">
+
+                                <div class="patient-avatar">
+                                    M
+                                </div>
+
+                                <strong>Maria da Silva</strong>
+
+                            </div>
+
+                            <span>23/05/2026</span>
+
+                            <span class="risk low">
+                                Risco baixo
+                            </span>
+
+                            <button>Ver detalhes →</button>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <div class="patient-cell">
+
+                                <div class="patient-avatar">
+                                    J
+                                </div>
+
+                                <strong>João Pereira</strong>
+
+                            </div>
+
+                            <span>20/05/2026</span>
+
+                            <span class="risk medium">
+                                Risco moderado
+                            </span>
+
+                            <button>Ver detalhes →</button>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <div class="patient-cell">
+
+                                <div class="patient-avatar">
+                                    A
+                                </div>
+
+                                <strong>Ana Souza</strong>
+
+                            </div>
+
+                            <span>18/05/2026</span>
+
+                            <span class="risk high">
+                                Risco alto
+                            </span>
+
+                            <button>Ver detalhes →</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- EVALUATIONS -->
+
+            <section class="page" id="evaluations">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <p class="greeting">Inteligência clínica</p>
+
+                        <h2>Avaliações</h2>
+
+                        <p class="subtitle">
+                            Histórico de análises e acompanhamento de lesões.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-button" onclick="openEvaluation()">
+                        ＋ Nova avaliação
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="evaluation-card">
+
+                        <div class="evaluation-image">
+                            <div class="mock-lesion"></div>
+                        </div>
+
+                        <div class="evaluation-info">
+
+                            <strong>Maria da Silva</strong>
+
+                            <span>Lesão pigmentada · 23/05/2026</span>
+
+                            <span class="risk low">
+                                Risco baixo
+                            </span>
+
+                        </div>
+
+                        <button>
+                            Ver análise →
+                        </button>
+
+                    </div>
+
+
+                    <div class="evaluation-card">
+
+                        <div class="evaluation-image">
+                            <div class="mock-lesion dark"></div>
+                        </div>
+
+                        <div class="evaluation-info">
+
+                            <strong>João Pereira</strong>
+
+                            <span>Lesão cutânea · 20/05/2026</span>
+
+                            <span class="risk medium">
+                                Risco moderado
+                            </span>
+
+                        </div>
+
+                        <button>
+                            Ver análise →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- REPORTS -->
+
+            <section class="page" id="reports">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <p class="greeting">Dados e acompanhamento</p>
+
+                        <h2>Relatórios</h2>
+
+                        <p class="subtitle">
+                            Visualize a evolução dos seus atendimentos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reports-grid">
+
+                    <div class="report-card">
+
+                        <span>Total de avaliações</span>
+
+                        <strong>342</strong>
+
+                        <div class="fake-chart">
+
+                            <div style="height: 30%"></div>
+                            <div style="height: 50%"></div>
+                            <div style="height: 40%"></div>
+                            <div style="height: 75%"></div>
+                            <div style="height: 60%"></div>
+                            <div style="height: 90%"></div>
+                            <div style="height: 80%"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span>Casos acompanhados</span>
+
+                        <strong>14</strong>
+
+                        <p class="warning">
+                            Casos que requerem acompanhamento
+                        </p>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span>Retornos previstos</span>
+
+                        <strong>09</strong>
+
+                        <p>
+                            Próximos 7 dias
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section class="page" id="settings">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <p class="greeting">Sistema</p>
+
+                        <h2>Configurações</h2>
+
+                        <p class="subtitle">
+                            Configure sua experiência no Pele+.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-panel">
+
+                    <div class="setting-item">
+
+                        <div>
+
+                            <strong>Notificações</strong>
+
+                            <p>Receba alertas sobre acompanhamentos.</p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input type="checkbox" checked>
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+
+                            <strong>Proteção de dados</strong>
+
+                            <p>Dados protegidos e anonimizados.</p>
+
+                        </div>
+
+                        <span class="security-badge">
+                            ✓ Ativo
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- NEW EVALUATION MODAL -->
+
+    <div class="modal-overlay" id="evaluationModal">
+
+        <div class="evaluation-modal">
+
+            <button class="close-modal" onclick="closeEvaluation()">
+                ×
+            </button>
+
+
+            <div class="modal-header">
+
+                <div class="modal-icon">
+                    ◎
+                </div>
+
+                <div>
+
+                    <h2>Nova avaliação</h2>
+
+                    <p>
+                        Adicione uma imagem da lesão para iniciar uma análise.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="upload-area" id="uploadArea">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>Adicionar imagem</h3>
+
+                <p>
+                    Arraste uma imagem ou selecione um arquivo do dispositivo.
+                </p>
+
+                <button class="secondary-button" onclick="document.getElementById('imageInput').click()">
+
+                    Selecionar imagem
+
+                </button>
+
+                <input type="file" id="imageInput" accept="image/*" hidden>
+
+                <small>
+                    JPG, PNG ou WEBP
+                </small>
+
+            </div>
+
+
+            <div class="image-preview" id="imagePreview">
+
+                <img id="previewImage">
+
+                <button onclick="removeImage()">
+                    Remover imagem
+                </button>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button class="cancel-button" onclick="closeEvaluation()">
+                    Cancelar
+                </button>
+
+                <button class="primary-button disabled" id="analyzeButton">
+
+                    Continuar para análise
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
