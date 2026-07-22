@@ -1,12 +1,9 @@
-
-/* =========================
-   NAVEGAÇÃO ENTRE ABAS
-========================= */
+/* =====================================
+   NAVEGAÇÃO PRINCIPAL
+===================================== */
 
 const navItems = document.querySelectorAll(".nav-item");
-
 const pages = document.querySelectorAll(".page");
-
 
 navItems.forEach(item => {
 
@@ -14,7 +11,9 @@ navItems.forEach(item => {
 
         const pageName = item.dataset.page;
 
-        changePage(pageName);
+        if (pageName) {
+            changePage(pageName);
+        }
 
     });
 
@@ -24,16 +23,12 @@ navItems.forEach(item => {
 function changePage(pageName) {
 
     pages.forEach(page => {
-
         page.classList.remove("active-page");
-
     });
 
 
     navItems.forEach(item => {
-
         item.classList.remove("active");
-
     });
 
 
@@ -45,24 +40,20 @@ function changePage(pageName) {
 
 
     if (selectedPage) {
-
         selectedPage.classList.add("active-page");
-
     }
 
 
     if (selectedButton) {
-
         selectedButton.classList.add("active");
-
     }
 
 }
 
 
-/* =========================
+/* =====================================
    MODAL DE NOVA AVALIAÇÃO
-========================= */
+===================================== */
 
 const modal = document.getElementById("evaluationModal");
 
@@ -81,12 +72,16 @@ function openEvaluation() {
 
     modal.classList.add("show");
 
+    document.body.style.overflow = "hidden";
+
 }
 
 
 function closeEvaluation() {
 
     modal.classList.remove("show");
+
+    document.body.style.overflow = "auto";
 
 }
 
@@ -95,7 +90,7 @@ function showImage(file) {
 
     if (!file || !file.type.startsWith("image/")) {
 
-        alert("Selecione um arquivo de imagem válido.");
+        alert("Selecione uma imagem válida.");
 
         return;
 
@@ -147,9 +142,9 @@ function removeImage() {
 }
 
 
-/* =========================
+/* =====================================
    DRAG AND DROP
-========================= */
+===================================== */
 
 uploadArea.addEventListener("dragover", function(event) {
 
@@ -180,9 +175,9 @@ uploadArea.addEventListener("drop", function(event) {
 });
 
 
-/* =========================
-   BOTÃO DE ANÁLISE
-========================= */
+/* =====================================
+   COMEÇAR ANÁLISE
+===================================== */
 
 analyzeButton.addEventListener("click", function() {
 
@@ -193,22 +188,87 @@ analyzeButton.addEventListener("click", function() {
     }
 
 
-    alert(
-        "A imagem foi preparada para análise. A inteligência artificial será conectada na próxima etapa."
-    );
+    closeEvaluation();
+
+    openAnalysisScreen();
 
 });
 
 
-/* =========================
-   FECHAR MODAL CLICANDO FORA
-========================= */
+/* =====================================
+   TELA DE ANÁLISE
+===================================== */
 
-modal.addEventListener("click", function(event) {
+function openAnalysisScreen() {
 
-    if (event.target === modal) {
+    const analysisScreen = document.getElementById("analysisScreen");
+
+    analysisScreen.classList.add("show");
+
+    startProcessing();
+
+}
+
+
+function closeAnalysisScreen() {
+
+    const analysisScreen = document.getElementById("analysisScreen");
+
+    analysisScreen.classList.remove("show");
+
+}
+
+
+/* =====================================
+   PROCESSAMENTO SIMULADO
+===================================== */
+
+function startProcessing() {
+
+    const processingState = document.getElementById("processingState");
+
+    const resultState = document.getElementById("resultState");
+
+    processingState.style.display = "block";
+
+    resultState.style.display = "none";
+
+
+    setTimeout(() => {
+
+        processingState.style.display = "none";
+
+        resultState.style.display = "block";
+
+    }, 2800);
+
+}
+
+
+/* =====================================
+   GERAR RELATÓRIO
+===================================== */
+
+function generateReport() {
+
+    alert(
+        "Relatório preparado. A geração de PDF será conectada na próxima etapa."
+    );
+
+}
+
+
+/* =====================================
+   FECHAR TELAS COM ESC
+===================================== */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
 
         closeEvaluation();
+
+        closeAnalysisScreen();
 
     }
 
