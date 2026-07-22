@@ -2,1540 +2,5126 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pele+ | Triagem inteligente da pele</title>
+<meta charset="UTF-8">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+<title>Pele+ | Tecnologia que cuida</title>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+:root {
+
+    --green: #285e3e;
+
+    --green-dark: #17432b;
+
+    --green-light: #eaf3eb;
+
+    --background: #f7f8f5;
+
+    --white: #ffffff;
+
+    --text: #102016;
+
+    --muted: #718078;
+
+    --border: #e2e8e2;
+
+    --orange: #e18b35;
+
+    --red: #d95c5c;
+
+    --purple: #8c72a9;
+
+}
+
+
+body {
+
+    font-family:
+
+        Inter,
+
+        -apple-system,
+
+        BlinkMacSystemFont,
+
+        "Segoe UI",
+
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+
+    font-family: inherit;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+
+.primary-button {
+
+    background: var(--green);
+
+    color: white;
+
+    padding: 15px 24px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+
+}
+
+
+.primary-button:hover {
+
+    background: var(--green-dark);
+
+    transform: translateY(-1px);
+
+}
+
+
+.secondary-button {
+
+    background: white;
+
+    color: var(--green);
+
+    border: 1px solid var(--border);
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    font-size: 13px;
+
+}
+
+
+.secondary-button:hover {
+
+    border-color: var(--green);
+
+}
+
+
+.outline-button {
+
+    background: white;
+
+    color: var(--green);
+
+    border: 1px solid var(--green);
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+}
+
+
+.back-button {
+
+    background: transparent;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   LAYOUT PRINCIPAL
+========================================= */
+
+.app {
+
+    display: flex;
+
+    min-height: 100vh;
+
+}
+
+
+.sidebar {
+
+    width: 372px;
+
+    background: white;
+
+    border-right: 1px solid var(--border);
+
+    padding: 32px 28px;
+
+    flex-shrink: 0;
+
+}
+
+
+.main {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 70px;
+
+}
+
+
+.logo-symbol {
+
+    width: 70px;
+
+    height: 70px;
+
+    position: relative;
+
+}
+
+
+.logo-circle {
+
+    position: absolute;
+
+    width: 52px;
+
+    height: 52px;
+
+    border: 9px solid #72a37a;
+
+    border-radius: 50%;
+
+    top: 5px;
+
+    left: 13px;
+
+}
+
+
+.logo-plus {
+
+    position: absolute;
+
+    color: var(--green);
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    left: 0;
+
+    bottom: 0;
+
+}
+
+
+.logo-text {
+
+    font-size: 32px;
+
+    letter-spacing: -1px;
+
+}
+
+
+.logo-text span {
+
+    color: #72a37a;
+
+}
+
+
+.logo-subtitle {
+
+    display: block;
+
+    color: var(--green);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-top: 6px;
+
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.nav-item {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background: transparent;
+
+    color: #65726a;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    text-align: left;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+
+}
+
+
+.nav-item:hover {
+
+    background: #f4f7f3;
+
+    color: var(--green);
+
+}
+
+
+.nav-item.active {
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    font-weight: 700;
+
+}
+
+
+.nav-icon {
+
+    width: 25px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.topbar {
+
+    height: 100px;
+
+    background: white;
+
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 42px;
+
+}
+
+
+.search {
+
+    width: 540px;
+
+    height: 62px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 0 22px;
+
+    color: var(--muted);
+
+}
+
+
+.search input {
+
+    border: none;
+
+    outline: none;
+
+    flex: 1;
+
+    font-size: 15px;
+
+    color: var(--text);
+
+}
+
+
+.profile-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+
+.notification {
+
+    font-size: 23px;
+
+    color: var(--green);
+
+    position: relative;
+
+}
+
+
+.notification::after {
+
+    content: "";
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #dc655e;
+
+    position: absolute;
+
+    right: -4px;
+
+    top: -2px;
+
+}
+
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    cursor: pointer;
+
+}
+
+
+.avatar {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: #e8f0e9;
+
+    color: var(--green);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 700;
+
+}
+
+
+.profile strong {
+
+    display: block;
+
+    font-size: 15px;
+
+}
+
+
+.profile span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 4px;
+
+}
+
+
+/* =========================================
+   PÁGINAS
+========================================= */
+
+.page {
+
+    display: none;
+
+    padding: 58px 64px;
+
+}
+
+
+.page.active {
+
+    display: block;
+
+}
+
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 42px;
+
+}
+
+
+.greeting {
+
+    color: var(--green);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+
+}
+
+
+.page-title {
+
+    font-size: 42px;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.page-description {
+
+    color: var(--muted);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================
+   CARDS DE MÉTRICAS
+========================================= */
+
+.metrics {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+
+    margin-bottom: 52px;
+
+}
+
+
+.metric-card {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 32px;
+
+    min-height: 180px;
+
+}
+
+
+.metric-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.metric-icon.green {
+
+    background: #e9f3eb;
+
+    color: var(--green);
+
+}
+
+
+.metric-icon.blue {
+
+    background: #e8f1f5;
+
+    color: #46728b;
+
+}
+
+
+.metric-icon.orange {
+
+    background: #fff0e1;
+
+    color: var(--orange);
+
+}
+
+
+.metric-icon.purple {
+
+    background: #f0ebf5;
+
+    color: var(--purple);
+
+}
+
+
+.metric-label {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+
+.metric-number {
+
+    font-size: 36px;
+
+    font-weight: 700;
+
+    margin: 6px 0;
+
+}
+
+
+.metric-trend {
+
+    color: #4c9360;
+
+    font-size: 12px;
+
+}
+
+
+.metric-warning {
+
+    color: var(--orange);
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================
+   ACESSO RÁPIDO
+========================================= */
+
+.section-title {
+
+    font-size: 25px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.quick-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+.quick-card {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    text-align: left;
+
+    transition: 0.2s;
+
+}
+
+
+.quick-card:hover {
+
+    border-color: var(--green);
+
+    transform: translateY(-2px);
+
+}
+
+
+.quick-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 15px;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+    flex-shrink: 0;
+
+}
+
+
+.quick-card strong {
+
+    display: block;
+
+    font-size: 16px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.quick-card span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+.quick-arrow {
+
+    margin-left: auto;
+
+    color: var(--green);
+
+    font-size: 24px;
+
+}
+
+
+/* =========================================
+   LISTAS
+========================================= */
+
+.content-card {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+}
+
+
+.patient-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.patient-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px 5px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.patient-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.patient-avatar {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: #edf4ee;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--green);
+
+    font-weight: 700;
+
+}
+
+
+.patient-info {
+
+    flex: 1;
+
+}
+
+
+.patient-info strong {
+
+    display: block;
+
+    font-size: 14px;
+
+}
+
+
+.patient-info span {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    display: block;
+
+    margin-top: 5px;
+
+}
+
+
+.risk-badge {
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+.risk-low {
+
+    background: #e9f4ea;
+
+    color: #478353;
+
+}
+
+
+.risk-medium {
+
+    background: #fff0d9;
+
+    color: #c37920;
+
+}
+
+
+.risk-high {
+
+    background: #fde8e8;
+
+    color: #c34e4e;
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal-overlay {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    background: rgba(20, 38, 27, 0.48);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+.modal-overlay.show {
+
+    display: flex;
+
+}
+
+
+.modal {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+}
+
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+
+}
+
+
+.modal-header h2 {
+
+    font-size: 25px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.modal-header p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+.close-button {
+
+    background: #f2f5f2;
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+.form-group {
+
+    margin-bottom: 20px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+}
+
+
+.form-group input,
+
+.form-group select {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    padding: 0 14px;
+
+    font-family: inherit;
+
+    outline: none;
+
+}
+
+
+.form-group input:focus,
+
+.form-group select:focus {
+
+    border-color: var(--green);
+
+}
+
+
+.modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 28px;
+
+}
+
+
+/* =========================================
+   UPLOAD
+========================================= */
+
+.upload-area {
+
+    border: 2px dashed #b9cdbb;
+
+    border-radius: 16px;
+
+    min-height: 240px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.upload-area:hover,
+
+.upload-area.dragover {
+
+    background: #f1f7f2;
+
+    border-color: var(--green);
+
+}
+
+
+.upload-icon {
+
+    font-size: 40px;
+
+    color: var(--green);
+
+    margin-bottom: 15px;
+
+}
+
+
+.upload-area strong {
+
+    font-size: 15px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.upload-area span {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+
+.upload-area input {
+
+    display: none;
+
+}
+
+
+.image-preview {
+
+    display: none;
+
+    text-align: center;
+
+}
+
+
+.image-preview img {
+
+    max-width: 100%;
+
+    max-height: 300px;
+
+    border-radius: 14px;
+
+    object-fit: contain;
+
+}
+
+
+.remove-image {
+
+    display: block;
+
+    margin: 15px auto 0;
+
+    background: transparent;
+
+    color: var(--red);
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================
+   TELA DE ANÁLISE
+========================================= */
+
+.analysis-screen {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    background: var(--background);
+
+    overflow-y: auto;
+
+}
+
+
+.analysis-screen.show {
+
+    display: block;
+
+}
+
+
+.analysis-container {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 40px 45px 70px;
+
+}
+
+
+.analysis-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 35px;
+
+}
+
+
+.analysis-label {
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.analysis-title h2 {
+
+    font-size: 32px;
+
+    margin-top: 8px;
+
+}
+
+
+.analysis-title p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 7px;
+
+}
+
+
+.analysis-patient {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: white;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+}
+
+
+.analysis-patient strong {
+
+    display: block;
+
+    font-size: 12px;
+
+}
+
+
+.analysis-patient small {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 4px;
+
+}
+
+
+/* PROCESSAMENTO */
+
+.processing-state {
+
+    max-width: 650px;
+
+    margin: 100px auto;
+
+    text-align: center;
+
+}
+
+
+.processing-circle {
+
+    width: 90px;
+
+    height: 90px;
+
+    border: 5px solid #dce9de;
+
+    border-top-color: var(--green);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 25px;
+
+    animation: spin 1.2s linear infinite;
+
+}
+
+
+.processing-circle span {
+
+    font-size: 30px;
+
+    color: var(--green);
+
+}
+
+
+@keyframes spin {
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+.processing-state h3 {
+
+    font-size: 22px;
+
+}
+
+
+.processing-state > p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    max-width: 450px;
+
+    margin: 10px auto 30px;
+
+    line-height: 1.6;
+
+}
+
+
+.processing-steps {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+}
+
+
+.processing-step {
+
+    color: #a1aaa3;
+
+    font-size: 11px;
+
+}
+
+
+.processing-step.completed {
+
+    color: #4e8957;
+
+}
+
+
+.processing-step.active {
+
+    color: var(--green);
+
+    font-weight: 600;
+
+}
+
+
+/* RESULTADO */
+
+.result-state {
+
+    display: none;
+
+}
+
+
+.result-hero {
+
+    display: grid;
+
+    grid-template-columns: 360px 1fr;
+
+    gap: 35px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.result-image-placeholder {
+
+    height: 270px;
+
+    background: #efd4c4;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.mock-lesion-large {
+
+    width: 125px;
+
+    height: 125px;
+
+    border-radius: 50%;
+
+    background: #77452e;
+
+    box-shadow:
+
+        10px 5px 0 #693d2a,
+
+        -7px 9px 0 #824d34;
+
+}
+
+
+.image-caption {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 10px;
+
+}
+
+
+.result-main {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.result-overline {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.risk-result {
+
+    display: flex;
+
+    gap: 16px;
+
+    align-items: flex-start;
+
+}
+
+
+.risk-indicator {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    background: #e6f2e7;
+
+    color: #4d8c58;
+
+}
+
+
+.risk-result h1 {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.risk-result p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    max-width: 550px;
+
+}
+
+
+.result-disclaimer {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 28px;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background: #f7f9f6;
+
+    color: var(--muted);
+
+}
+
+
+.result-disclaimer p {
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+/* SEÇÕES */
+
+.analysis-section {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 26px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+
+}
+
+
+.section-label {
+
+    color: var(--green);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+}
+
+
+.section-heading h3 {
+
+    font-size: 18px;
+
+    margin-top: 5px;
+
+}
+
+
+.analysis-status {
+
+    color: #4e8957;
+
+    background: #edf6ee;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+}
+
+
+/* CARACTERÍSTICAS */
+
+.characteristics-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.characteristic-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+}
+
+
+.characteristic-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 10px;
+
+    background: #eaf3eb;
+
+    color: #4e8957;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.characteristic-card strong {
+
+    display: block;
+
+    font-size: 12px;
+
+}
+
+
+.characteristic-card span {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    display: block;
+
+    margin-top: 4px;
+
+}
+
+
+/* EVOLUÇÃO */
+
+.evolution-timeline {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 20px 0;
+
+}
+
+
+.timeline-item {
+
+    text-align: center;
+
+}
+
+
+.timeline-image {
+
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 12px;
+
+    background: #efd4c4;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+}
+
+
+.mock-lesion-small {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #77452e;
+
+}
+
+
+.timeline-item strong {
+
+    display: block;
+
+    font-size: 11px;
+
+}
+
+
+.timeline-item span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    margin-top: 4px;
+
+}
+
+
+.timeline-line {
+
+    width: 50px;
+
+    height: 1px;
+
+    background: #cdd9cf;
+
+}
+
+
+.evolution-message {
+
+    display: flex;
+
+    gap: 12px;
+
+    background: #f2f7f2;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    color: #4e8957;
+
+}
+
+
+.evolution-message p {
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+}
+
+
+.evolution-message strong {
+
+    display: block;
+
+    color: #4e8957;
+
+    margin-bottom: 3px;
+
+}
+
+
+/* RECOMENDAÇÕES */
+
+.recommendations-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.recommendation-card {
+
+    display: flex;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+}
+
+
+.recommendation-number {
+
+    color: var(--green);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.recommendation-card strong {
+
+    font-size: 12px;
+
+}
+
+
+.recommendation-card p {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    margin-top: 7px;
+
+}
+
+
+.analysis-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media(max-width: 1200px) {
+
+    .sidebar {
+
+        width: 260px;
+
+    }
+
+
+    .metrics {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+
+    .quick-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media(max-width: 800px) {
+
+    .sidebar {
+
+        width: 80px;
+
+        padding: 25px 12px;
+
+    }
+
+
+    .logo-text,
+
+    .logo-subtitle {
+
+        display: none;
+
+    }
+
+
+    .logo {
+
+        justify-content: center;
+
+    }
+
+
+    .nav-item {
+
+        justify-content: center;
+
+        padding: 17px 5px;
+
+    }
+
+
+    .nav-item span:not(.nav-icon) {
+
+        display: none;
+
+    }
+
+
+    .topbar {
+
+        padding: 0 20px;
+
+    }
+
+
+    .search {
+
+        width: 100%;
+
+    }
+
+
+    .profile-area {
+
+        display: none;
+
+    }
+
+
+    .page {
+
+        padding: 35px 22px;
+
+    }
+
+
+    .page-header {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+
+    .page-title {
+
+        font-size: 32px;
+
+    }
+
+
+    .result-hero {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .characteristics-grid,
+
+    .recommendations-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media(max-width: 550px) {
+
+    .metrics {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .characteristics-grid,
+
+    .recommendations-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .analysis-container {
+
+        padding: 25px 18px 50px;
+
+    }
+
+
+    .analysis-header {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+
+    .processing-steps {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+
+    .evolution-timeline {
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <div class="app-container">
 
-        <!-- SIDEBAR -->
+<div class="app">
 
-        <aside class="sidebar">
 
-            <div class="brand">
-
-                <div class="brand-icon">
-                    <span>+</span>
-                </div>
-
-                <div>
-                    <h1>Pele<span>+</span></h1>
-                    <small>TECNOLOGIA QUE CUIDA</small>
-                </div>
-
-            </div>
-
-            <nav class="navigation">
-
-                <button class="nav-item active" data-page="dashboard">
-                    <span>⌂</span>
-                    <label>Início</label>
-                </button>
-
-                <button class="nav-item" data-page="patients">
-                    <span>♙</span>
-                    <label>Pacientes</label>
-                </button>
-
-                <button class="nav-item" data-page="evaluations">
-                    <span>⌁</span>
-                    <label>Avaliações</label>
-                </button>
-
-                <button class="nav-item" data-page="reports">
-                    <span>▥</span>
-                    <label>Relatórios</label>
-                </button>
-
-            </nav>
-
-            <div class="sidebar-bottom">
-
-                <button class="nav-item" data-page="settings">
-                    <span>⚙</span>
-                    <label>Configurações</label>
-                </button>
-
-                <div class="professional-card">
-
-                    <div class="profile-avatar">
-                        DR
-                    </div>
-
-                    <div>
-                        <strong>Profissional</strong>
-                        <small>Atendimento</small>
-                    </div>
-
-                    <span>⋮</span>
-
-                </div>
-
-            </div>
-
-        </aside>
-
-
-        <!-- MAIN CONTENT -->
-
-        <main class="main-content">
-
-            <!-- HEADER -->
-
-            <header class="topbar">
-
-                <div class="mobile-logo">
-                    Pele<span>+</span>
-                </div>
-
-                <div class="search-box">
-
-                    <span>⌕</span>
-
-                    <input type="text" placeholder="Buscar paciente ou avaliação...">
-
-                </div>
-
-                <div class="top-actions">
-
-                    <button class="notification-button">
-                        ♧
-                        <span class="notification-dot"></span>
-                    </button>
-
-                    <div class="user-info">
-
-                        <div class="profile-avatar small">
-                            DR
-                        </div>
-
-                        <div>
-                            <strong>Profissional</strong>
-                            <small>Atendimento</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <!-- DASHBOARD -->
-
-            <section class="page active-page" id="dashboard">
-
-                <div class="page-header">
-
-                    <div>
-
-                        <p class="greeting">Olá, profissional</p>
-
-                        <h2>Visão geral</h2>
-
-                        <p class="subtitle">
-                            Acompanhe suas avaliações e pacientes em um só lugar.
-                        </p>
-
-                    </div>
-
-                    <button class="primary-button" onclick="openEvaluation()">
-
-                        <span>＋</span>
-
-                        Nova avaliação
-
-                    </button>
-
-                </div>
-
-
-                <!-- METRICS -->
-
-                <div class="metrics-grid">
-
-                    <div class="metric-card">
-
-                        <div class="metric-icon green">
-                            ♙
-                        </div>
-
-                        <div>
-
-                            <span>Pacientes acompanhados</span>
-
-                            <strong>128</strong>
-
-                            <small class="positive">
-                                ↑ 12% este mês
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="metric-card">
-
-                        <div class="metric-icon blue">
-                            ⌁
-                        </div>
-
-                        <div>
-
-                            <span>Avaliações realizadas</span>
-
-                            <strong>342</strong>
-
-                            <small class="positive">
-                                ↑ 18% este mês
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="metric-card">
-
-                        <div class="metric-icon orange">
-                            !
-                        </div>
-
-                        <div>
-
-                            <span>Casos para acompanhamento</span>
-
-                            <strong>14</strong>
-
-                            <small class="warning">
-                                Requerem atenção
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="metric-card">
-
-                        <div class="metric-icon purple">
-                            ◷
-                        </div>
-
-                        <div>
-
-                            <span>Retornos previstos</span>
-
-                            <strong>09</strong>
-
-                            <small>
-                                Próximos 7 dias
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- QUICK ACTION -->
-
-                <div class="section-title">
-
-                    <h3>Acesso rápido</h3>
-
-                </div>
-
-
-                <div class="quick-actions">
-
-                    <button onclick="openEvaluation()" class="quick-card">
-
-                        <div class="quick-icon">
-                            ◎
-                        </div>
-
-                        <div>
-
-                            <strong>Nova avaliação</strong>
-
-                            <p>Analise uma nova lesão</p>
-
-                        </div>
-
-                        <span>→</span>
-
-                    </button>
-
-
-                    <button onclick="changePage('patients')" class="quick-card">
-
-                        <div class="quick-icon">
-                            ♙
-                        </div>
-
-                        <div>
-
-                            <strong>Adicionar paciente</strong>
-
-                            <p>Cadastre um novo paciente</p>
-
-                        </div>
-
-                        <span>→</span>
-
-                    </button>
-
-
-                    <button onclick="changePage('reports')" class="quick-card">
-
-                        <div class="quick-icon">
-                            ▥
-                        </div>
-
-                        <div>
-
-                            <strong>Ver relatórios</strong>
-
-                            <p>Acompanhe seus dados</p>
-
-                        </div>
-
-                        <span>→</span>
-
-                    </button>
-
-                </div>
-
-
-                <!-- RECENT PATIENTS -->
-
-                <div class="content-grid">
-
-                    <div class="panel">
-
-                        <div class="panel-header">
-
-                            <div>
-
-                                <h3>Pacientes recentes</h3>
-
-                                <p>Últimas avaliações realizadas</p>
-
-                            </div>
-
-                            <button onclick="changePage('patients')">
-                                Ver todos →
-                            </button>
-
-                        </div>
-
-
-                        <div class="patient-list">
-
-                            <div class="patient-row">
-
-                                <div class="patient-avatar">
-                                    M
-                                </div>
-
-                                <div class="patient-data">
-
-                                    <strong>Maria da Silva</strong>
-
-                                    <small>Última avaliação: 23/05/2026</small>
-
-                                </div>
-
-                                <span class="risk low">
-                                    Risco baixo
-                                </span>
-
-                            </div>
-
-
-                            <div class="patient-row">
-
-                                <div class="patient-avatar">
-                                    J
-                                </div>
-
-                                <div class="patient-data">
-
-                                    <strong>João Pereira</strong>
-
-                                    <small>Última avaliação: 20/05/2026</small>
-
-                                </div>
-
-                                <span class="risk medium">
-                                    Risco moderado
-                                </span>
-
-                            </div>
-
-
-                            <div class="patient-row">
-
-                                <div class="patient-avatar">
-                                    A
-                                </div>
-
-                                <div class="patient-data">
-
-                                    <strong>Ana Souza</strong>
-
-                                    <small>Última avaliação: 18/05/2026</small>
-
-                                </div>
-
-                                <span class="risk high">
-                                    Risco alto
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- ACTIVITY -->
-
-                    <div class="panel">
-
-                        <div class="panel-header">
-
-                            <div>
-
-                                <h3>Atividade recente</h3>
-
-                                <p>Últimas movimentações</p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="activity-list">
-
-                            <div class="activity-item">
-
-                                <div class="activity-dot green-dot"></div>
-
-                                <div>
-
-                                    <strong>Nova avaliação concluída</strong>
-
-                                    <small>Maria da Silva · há 2 horas</small>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="activity-item">
-
-                                <div class="activity-dot orange-dot"></div>
-
-                                <div>
-
-                                    <strong>Retorno recomendado</strong>
-
-                                    <small>João Pereira · ontem</small>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="activity-item">
-
-                                <div class="activity-dot blue-dot"></div>
-
-                                <div>
-
-                                    <strong>Novo paciente cadastrado</strong>
-
-                                    <small>Lucas Oliveira · há 2 dias</small>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- PATIENTS -->
-
-            <section class="page" id="patients">
-
-                <div class="page-header">
-
-                    <div>
-
-                        <p class="greeting">Gestão clínica</p>
-
-                        <h2>Pacientes</h2>
-
-                        <p class="subtitle">
-                            Gerencie e acompanhe o histórico dos seus pacientes.
-                        </p>
-
-                    </div>
-
-                    <button class="primary-button">
-                        ＋ Novo paciente
-                    </button>
-
-                </div>
-
-
-                <div class="panel">
-
-                    <div class="table-toolbar">
-
-                        <input type="text" placeholder="Buscar paciente...">
-
-                        <select>
-
-                            <option>Todos os pacientes</option>
-
-                            <option>Risco baixo</option>
-
-                            <option>Risco moderado</option>
-
-                            <option>Risco alto</option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="patient-table">
-
-                        <div class="table-header">
-
-                            <span>Paciente</span>
-
-                            <span>Última avaliação</span>
-
-                            <span>Status</span>
-
-                            <span>Ações</span>
-
-                        </div>
-
-
-                        <div class="table-row">
-
-                            <div class="patient-cell">
-
-                                <div class="patient-avatar">
-                                    M
-                                </div>
-
-                                <strong>Maria da Silva</strong>
-
-                            </div>
-
-                            <span>23/05/2026</span>
-
-                            <span class="risk low">
-                                Risco baixo
-                            </span>
-
-                            <button>Ver detalhes →</button>
-
-                        </div>
-
-
-                        <div class="table-row">
-
-                            <div class="patient-cell">
-
-                                <div class="patient-avatar">
-                                    J
-                                </div>
-
-                                <strong>João Pereira</strong>
-
-                            </div>
-
-                            <span>20/05/2026</span>
-
-                            <span class="risk medium">
-                                Risco moderado
-                            </span>
-
-                            <button>Ver detalhes →</button>
-
-                        </div>
-
-
-                        <div class="table-row">
-
-                            <div class="patient-cell">
-
-                                <div class="patient-avatar">
-                                    A
-                                </div>
-
-                                <strong>Ana Souza</strong>
-
-                            </div>
-
-                            <span>18/05/2026</span>
-
-                            <span class="risk high">
-                                Risco alto
-                            </span>
-
-                            <button>Ver detalhes →</button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- EVALUATIONS -->
-
-            <section class="page" id="evaluations">
-
-                <div class="page-header">
-
-                    <div>
-
-                        <p class="greeting">Inteligência clínica</p>
-
-                        <h2>Avaliações</h2>
-
-                        <p class="subtitle">
-                            Histórico de análises e acompanhamento de lesões.
-                        </p>
-
-                    </div>
-
-                    <button class="primary-button" onclick="openEvaluation()">
-                        ＋ Nova avaliação
-                    </button>
-
-                </div>
-
-
-                <div class="panel">
-
-                    <div class="evaluation-card">
-
-                        <div class="evaluation-image">
-                            <div class="mock-lesion"></div>
-                        </div>
-
-                        <div class="evaluation-info">
-
-                            <strong>Maria da Silva</strong>
-
-                            <span>Lesão pigmentada · 23/05/2026</span>
-
-                            <span class="risk low">
-                                Risco baixo
-                            </span>
-
-                        </div>
-
-                        <button>
-                            Ver análise →
-                        </button>
-
-                    </div>
-
-
-                    <div class="evaluation-card">
-
-                        <div class="evaluation-image">
-                            <div class="mock-lesion dark"></div>
-                        </div>
-
-                        <div class="evaluation-info">
-
-                            <strong>João Pereira</strong>
-
-                            <span>Lesão cutânea · 20/05/2026</span>
-
-                            <span class="risk medium">
-                                Risco moderado
-                            </span>
-
-                        </div>
-
-                        <button>
-                            Ver análise →
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- REPORTS -->
-
-            <section class="page" id="reports">
-
-                <div class="page-header">
-
-                    <div>
-
-                        <p class="greeting">Dados e acompanhamento</p>
-
-                        <h2>Relatórios</h2>
-
-                        <p class="subtitle">
-                            Visualize a evolução dos seus atendimentos.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="reports-grid">
-
-                    <div class="report-card">
-
-                        <span>Total de avaliações</span>
-
-                        <strong>342</strong>
-
-                        <div class="fake-chart">
-
-                            <div style="height: 30%"></div>
-                            <div style="height: 50%"></div>
-                            <div style="height: 40%"></div>
-                            <div style="height: 75%"></div>
-                            <div style="height: 60%"></div>
-                            <div style="height: 90%"></div>
-                            <div style="height: 80%"></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="report-card">
-
-                        <span>Casos acompanhados</span>
-
-                        <strong>14</strong>
-
-                        <p class="warning">
-                            Casos que requerem acompanhamento
-                        </p>
-
-                    </div>
-
-
-                    <div class="report-card">
-
-                        <span>Retornos previstos</span>
-
-                        <strong>09</strong>
-
-                        <p>
-                            Próximos 7 dias
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- SETTINGS -->
-
-            <section class="page" id="settings">
-
-                <div class="page-header">
-
-                    <div>
-
-                        <p class="greeting">Sistema</p>
-
-                        <h2>Configurações</h2>
-
-                        <p class="subtitle">
-                            Configure sua experiência no Pele+.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="settings-panel">
-
-                    <div class="setting-item">
-
-                        <div>
-
-                            <strong>Notificações</strong>
-
-                            <p>Receba alertas sobre acompanhamentos.</p>
-
-                        </div>
-
-                        <label class="switch">
-
-                            <input type="checkbox" checked>
-
-                            <span></span>
-
-                        </label>
-
-                    </div>
-
-
-                    <div class="setting-item">
-
-                        <div>
-
-                            <strong>Proteção de dados</strong>
-
-                            <p>Dados protegidos e anonimizados.</p>
-
-                        </div>
-
-                        <span class="security-badge">
-                            ✓ Ativo
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </main>
-
-    </div>
-
-
-    <!-- NEW EVALUATION MODAL -->
-
-    <div class="modal-overlay" id="evaluationModal">
-
-        <div class="evaluation-modal">
-
-            <button class="close-modal" onclick="closeEvaluation()">
-                ×
-            </button>
-
-
-            <div class="modal-header">
-
-                <div class="modal-icon">
-                    ◎
-                </div>
-
-                <div>
-
-                    <h2>Nova avaliação</h2>
-
-                    <p>
-                        Adicione uma imagem da lesão para iniciar uma análise.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="upload-area" id="uploadArea">
-
-                <div class="upload-icon">
-                    ↑
-                </div>
-
-                <h3>Adicionar imagem</h3>
-
-                <p>
-                    Arraste uma imagem ou selecione um arquivo do dispositivo.
-                </p>
-
-                <button class="secondary-button" onclick="document.getElementById('imageInput').click()">
-
-                    Selecionar imagem
-
-                </button>
-
-                <input type="file" id="imageInput" accept="image/*" hidden>
-
-                <small>
-                    JPG, PNG ou WEBP
-                </small>
-
-            </div>
-
-
-            <div class="image-preview" id="imagePreview">
-
-                <img id="previewImage">
-
-                <button onclick="removeImage()">
-                    Remover imagem
-                </button>
-
-            </div>
-
-
-            <div class="modal-footer">
-
-                <button class="cancel-button" onclick="closeEvaluation()">
-                    Cancelar
-                </button>
-
-                <button class="primary-button disabled" id="analyzeButton">
-
-                    Continuar para análise
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-    <!-- =====================================
-     TELA COMPLETA DE ANÁLISE
+<!-- =====================================
+     SIDEBAR
 ===================================== -->
 
-<div class="analysis-screen" id="analysisScreen">
-
-    <div class="analysis-container">
-
-        <header class="analysis-header">
-
-            <div>
-
-                <button
-                    class="back-button"
-                    onclick="closeAnalysisScreen()">
-
-                    ← Voltar
-
-                </button>
-
-                <div class="analysis-title">
-
-                    <span class="analysis-label">
-                        NOVA AVALIAÇÃO
-                    </span>
-
-                    <h2>Análise da lesão</h2>
-
-                    <p>
-                        Avaliação visual e acompanhamento da evolução.
-                    </p>
-
-                </div>
-
-            </div>
+<aside class="sidebar">
 
 
-            <div class="analysis-patient">
+<div class="logo">
 
-                <div class="patient-avatar">
-                    M
-                </div>
+    <div class="logo-symbol">
 
-                <div>
+        <div class="logo-circle"></div>
 
-                    <strong>Maria da Silva</strong>
+        <div class="logo-plus">+</div>
 
-                    <small>
-                        Avaliação iniciada hoje
-                    </small>
-
-                </div>
-
-            </div>
-
-        </header>
+    </div>
 
 
-        <!-- PROCESSAMENTO -->
+    <div>
 
-        <div
-            class="processing-state"
-            id="processingState">
+        <div class="logo-text">
 
-            <div class="processing-animation">
-
-                <div class="processing-circle">
-
-                    <span>✦</span>
-
-                </div>
-
-            </div>
-
-
-            <h3>Analisando imagem...</h3>
-
-            <p>
-
-                O Pele+ está processando a imagem e preparando
-                os dados para avaliação.
-
-            </p>
-
-
-            <div class="processing-steps">
-
-                <div class="processing-step completed">
-
-                    <span>✓</span>
-
-                    Imagem recebida
-
-                </div>
-
-
-                <div class="processing-step active">
-
-                    <span>◌</span>
-
-                    Analisando características
-
-                </div>
-
-
-                <div class="processing-step">
-
-                    <span>○</span>
-
-                    Preparando resultado
-
-                </div>
-
-            </div>
+            Pele<span>+</span>
 
         </div>
 
 
-        <!-- RESULTADO -->
+        <span class="logo-subtitle">
 
-        <div
-            class="result-state"
-            id="resultState">
+            TECNOLOGIA QUE CUIDA
 
-
-            <!-- RESULTADO PRINCIPAL -->
-
-            <div class="result-hero">
-
-                <div class="result-image-area">
-
-                    <div class="result-image-placeholder">
-
-                        <div class="mock-lesion-large"></div>
-
-                    </div>
-
-
-                    <div class="image-caption">
-
-                        <span>
-
-                            Imagem analisada
-
-                        </span>
-
-                        <small>
-
-                            Capturada em 21/07/2026
-
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="result-main">
-
-                    <span class="result-overline">
-
-                        RESULTADO DA TRIAGEM
-
-                    </span>
-
-
-                    <div class="risk-result low-risk">
-
-                        <div class="risk-indicator">
-
-                            ✓
-
-                        </div>
-
-
-                        <div>
-
-                            <h1>Risco baixo</h1>
-
-                            <p>
-
-                                Não foram identificadas características
-                                que indiquem alta prioridade nesta avaliação.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-disclaimer">
-
-                        <span>ⓘ</span>
-
-                        <p>
-
-                            Este resultado é uma estimativa de triagem
-                            e não substitui a avaliação de um profissional
-                            de saúde.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- CARACTERÍSTICAS -->
-
-            <div class="analysis-section">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="section-label">
-
-                            ANÁLISE VISUAL
-
-                        </span>
-
-                        <h3>Características observadas</h3>
-
-                    </div>
-
-                    <span class="analysis-status">
-
-                        ✓ Avaliação concluída
-
-                    </span>
-
-                </div>
-
-
-                <div class="characteristics-grid">
-
-
-                    <div class="characteristic-card">
-
-                        <div class="characteristic-icon green">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <strong>Assimetria</strong>
-
-                            <span>
-
-                                Baixa
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="characteristic-card">
-
-                        <div class="characteristic-icon green">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <strong>Bordas</strong>
-
-                            <span>
-
-                                Regulares
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="characteristic-card">
-
-                        <div class="characteristic-icon green">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <strong>Coloração</strong>
-
-                            <span>
-
-                                Homogênea
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="characteristic-card">
-
-                        <div class="characteristic-icon green">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <strong>Diâmetro</strong>
-
-                            <span>
-
-                                &lt; 6 mm
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- EVOLUÇÃO -->
-
-            <div class="analysis-section">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="section-label">
-
-                            ACOMPANHAMENTO
-
-                        </span>
-
-                        <h3>Evolução da lesão</h3>
-
-                    </div>
-
-
-                    <button class="outline-button">
-
-                        ＋ Adicionar imagem anterior
-
-                    </button>
-
-                </div>
-
-
-                <div class="evolution-timeline">
-
-
-                    <div class="timeline-item current">
-
-                        <div class="timeline-image">
-
-                            <div class="mock-lesion-small"></div>
-
-                        </div>
-
-                        <strong>
-
-                            Hoje
-
-                        </strong>
-
-                        <span>
-
-                            Avaliação atual
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="timeline-line"></div>
-
-
-                    <div class="timeline-item">
-
-                        <div class="timeline-image old">
-
-                            <div class="mock-lesion-small"></div>
-
-                        </div>
-
-                        <strong>
-
-                            24/04/2026
-
-                        </strong>
-
-                        <span>
-
-                            Avaliação anterior
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="timeline-line"></div>
-
-
-                    <div class="timeline-item">
-
-                        <div class="timeline-image old">
-
-                            <div class="mock-lesion-small"></div>
-
-                        </div>
-
-                        <strong>
-
-                            10/04/2026
-
-                        </strong>
-
-                        <span>
-
-                            Primeira avaliação
-
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="evolution-message">
-
-                    <span>↗</span>
-
-                    <p>
-
-                        <strong>Sem alterações significativas detectadas</strong>
-
-                        A lesão apresenta estabilidade em comparação
-                        com avaliações anteriores.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- RECOMENDAÇÕES -->
-
-            <div class="analysis-section">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="section-label">
-
-                            PRÓXIMOS PASSOS
-
-                        </span>
-
-                        <h3>Recomendações de acompanhamento</h3>
-
-                    </div>
-
-                </div>
-
-
-                <div class="recommendations-grid">
-
-
-                    <div class="recommendation-card">
-
-                        <div class="recommendation-number">
-
-                            01
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-
-                                Continue acompanhando
-
-                            </strong>
-
-                            <p>
-
-                                Registre novas imagens para comparar
-                                possíveis alterações ao longo do tempo.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="recommendation-card">
-
-                        <div class="recommendation-number">
-
-                            02
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-
-                                Próxima avaliação
-
-                            </strong>
-
-                            <p>
-
-                                Considere realizar um novo acompanhamento
-                                conforme orientação do profissional de saúde.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="recommendation-card">
-
-                        <div class="recommendation-number">
-
-                            03
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-
-                                Observe mudanças
-
-                            </strong>
-
-                            <p>
-
-                                Procure avaliação profissional caso observe
-                                mudanças rápidas na lesão.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- RODAPÉ -->
-
-            <div class="analysis-footer">
-
-                <button
-                    class="secondary-button"
-                    onclick="closeAnalysisScreen()">
-
-                    Fechar avaliação
-
-                </button>
-
-
-                <button
-                    class="primary-button"
-                    onclick="generateReport()">
-
-                    ↓ Gerar relatório
-
-                </button>
-
-            </div>
-
-        </div>
+        </span>
 
     </div>
 
 </div>
 
 
-    <script src="./script.js?v=2"></script>
+<nav class="nav">
+
+
+<button
+
+    class="nav-item active"
+
+    data-page="dashboard"
+
+    onclick="changePage('dashboard')">
+
+    <span class="nav-icon">⌂</span>
+
+    <span>Início</span>
+
+</button>
+
+
+<button
+
+    class="nav-item"
+
+    data-page="patients"
+
+    onclick="changePage('patients')">
+
+    <span class="nav-icon">♙</span>
+
+    <span>Pacientes</span>
+
+</button>
+
+
+<button
+
+    class="nav-item"
+
+    data-page="evaluations"
+
+    onclick="changePage('evaluations')">
+
+    <span class="nav-icon">⌁</span>
+
+    <span>Avaliações</span>
+
+</button>
+
+
+<button
+
+    class="nav-item"
+
+    data-page="reports"
+
+    onclick="changePage('reports')">
+
+    <span class="nav-icon">▥</span>
+
+    <span>Relatórios</span>
+
+</button>
+
+
+</nav>
+
+
+</aside>
+
+
+<!-- =====================================
+     ÁREA PRINCIPAL
+===================================== -->
+
+<main class="main">
+
+
+<header class="topbar">
+
+
+<div class="search">
+
+    <span>⌕</span>
+
+    <input
+
+        type="text"
+
+        placeholder="Buscar paciente ou avaliação..."
+
+    >
+
+</div>
+
+
+<div class="profile-area">
+
+
+<div class="notification">
+
+    ♧
+
+</div>
+
+
+<div
+
+    class="profile"
+
+    onclick="showProfile()">
+
+    <div class="avatar">
+
+        DR
+
+    </div>
+
+
+    <div>
+
+        <strong>Profissional</strong>
+
+        <span>Atendimento</span>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<!-- =====================================
+     INÍCIO
+===================================== -->
+
+<section
+
+    class="page active"
+
+    id="dashboard">
+
+
+<div class="page-header">
+
+
+<div>
+
+    <div class="greeting">
+
+        Olá, profissional
+
+    </div>
+
+
+    <h1 class="page-title">
+
+        Visão geral
+
+    </h1>
+
+
+    <p class="page-description">
+
+        Acompanhe suas avaliações e pacientes em um só lugar.
+
+    </p>
+
+</div>
+
+
+<button
+
+    class="primary-button"
+
+    onclick="openEvaluation()">
+
+    ＋ Nova avaliação
+
+</button>
+
+
+</div>
+
+
+<div class="metrics">
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon green">
+
+    ♙
+
+</div>
+
+
+<div class="metric-label">
+
+    Pacientes acompanhados
+
+</div>
+
+
+<div class="metric-number">
+
+    128
+
+</div>
+
+
+<div class="metric-trend">
+
+    ↑ 12% este mês
+
+</div>
+
+
+</div>
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon blue">
+
+    ⌁
+
+</div>
+
+
+<div class="metric-label">
+
+    Avaliações realizadas
+
+</div>
+
+
+<div class="metric-number">
+
+    342
+
+</div>
+
+
+<div class="metric-trend">
+
+    ↑ 18% este mês
+
+</div>
+
+
+</div>
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon orange">
+
+    !
+
+</div>
+
+
+<div class="metric-label">
+
+    Casos para acompanhamento
+
+</div>
+
+
+<div class="metric-number">
+
+    14
+
+</div>
+
+
+<div class="metric-warning">
+
+    Requerem atenção
+
+</div>
+
+
+</div>
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon purple">
+
+    ◷
+
+</div>
+
+
+<div class="metric-label">
+
+    Retornos previstos
+
+</div>
+
+
+<div class="metric-number">
+
+    09
+
+</div>
+
+
+<div class="metric-label">
+
+    Próximos 7 dias
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<h2 class="section-title">
+
+    Acesso rápido
+
+</h2>
+
+
+<div class="quick-grid">
+
+
+<button
+
+    class="quick-card"
+
+    onclick="openEvaluation()">
+
+
+<div class="quick-icon">
+
+    ◎
+
+</div>
+
+
+<div>
+
+    <strong>Nova avaliação</strong>
+
+    <span>Analise uma nova lesão</span>
+
+</div>
+
+
+<div class="quick-arrow">
+
+    →
+
+</div>
+
+
+</button>
+
+
+<button
+
+    class="quick-card"
+
+    onclick="openPatientModal()">
+
+
+<div class="quick-icon">
+
+    ♙
+
+</div>
+
+
+<div>
+
+    <strong>Adicionar paciente</strong>
+
+    <span>Cadastre um novo paciente</span>
+
+</div>
+
+
+<div class="quick-arrow">
+
+    →
+
+</div>
+
+
+</button>
+
+
+<button
+
+    class="quick-card"
+
+    onclick="changePage('reports')">
+
+
+<div class="quick-icon">
+
+    ▥
+
+</div>
+
+
+<div>
+
+    <strong>Ver relatórios</strong>
+
+    <span>Acompanhe seus dados</span>
+
+</div>
+
+
+<div class="quick-arrow">
+
+    →
+
+</div>
+
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================
+     PACIENTES
+===================================== -->
+
+<section
+
+    class="page"
+
+    id="patients">
+
+
+<div class="page-header">
+
+
+<div>
+
+    <div class="greeting">
+
+        GESTÃO DE PACIENTES
+
+    </div>
+
+
+    <h1 class="page-title">
+
+        Pacientes
+
+    </h1>
+
+
+    <p class="page-description">
+
+        Acompanhe o histórico e a evolução de cada paciente.
+
+    </p>
+
+</div>
+
+
+<button
+
+    class="primary-button"
+
+    onclick="openPatientModal()">
+
+    ＋ Adicionar paciente
+
+</button>
+
+
+</div>
+
+
+<div class="content-card">
+
+
+<div class="patient-list">
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    M
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>Maria da Silva</strong>
+
+    <span>Última avaliação: 23/05/2026</span>
+
+</div>
+
+
+<span class="risk-badge risk-low">
+
+    Risco baixo
+
+</span>
+
+
+<button
+
+    class="outline-button"
+
+    onclick="openEvaluation()">
+
+    Avaliar
+
+</button>
+
+
+</div>
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    J
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>João Pereira</strong>
+
+    <span>Última avaliação: 20/05/2026</span>
+
+</div>
+
+
+<span class="risk-badge risk-medium">
+
+    Risco moderado
+
+</span>
+
+
+<button
+
+    class="outline-button"
+
+    onclick="openEvaluation()">
+
+    Avaliar
+
+</button>
+
+
+</div>
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    A
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>Ana Souza</strong>
+
+    <span>Última avaliação: 18/05/2026</span>
+
+</div>
+
+
+<span class="risk-badge risk-high">
+
+    Risco alto
+
+</span>
+
+
+<button
+
+    class="outline-button"
+
+    onclick="openEvaluation()">
+
+    Avaliar
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================
+     AVALIAÇÕES
+===================================== -->
+
+<section
+
+    class="page"
+
+    id="evaluations">
+
+
+<div class="page-header">
+
+
+<div>
+
+    <div class="greeting">
+
+        HISTÓRICO
+
+    </div>
+
+
+    <h1 class="page-title">
+
+        Avaliações
+
+    </h1>
+
+
+    <p class="page-description">
+
+        Consulte avaliações realizadas e acompanhe resultados.
+
+    </p>
+
+</div>
+
+
+<button
+
+    class="primary-button"
+
+    onclick="openEvaluation()">
+
+    ＋ Nova avaliação
+
+</button>
+
+
+</div>
+
+
+<div class="content-card">
+
+
+<div class="patient-list">
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    M
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>Maria da Silva</strong>
+
+    <span>Avaliação em 23/05/2026 · Lesão pigmentada</span>
+
+</div>
+
+
+<span class="risk-badge risk-low">
+
+    Baixo
+
+</span>
+
+
+<button
+
+    class="outline-button"
+
+    onclick="openAnalysisFromHistory()">
+
+    Ver análise
+
+</button>
+
+
+</div>
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    J
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>João Pereira</strong>
+
+    <span>Avaliação em 20/05/2026 · Mancha cutânea</span>
+
+</div>
+
+
+<span class="risk-badge risk-medium">
+
+    Moderado
+
+</span>
+
+
+<button
+
+    class="outline-button"
+
+    onclick="openAnalysisFromHistory()">
+
+    Ver análise
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================
+     RELATÓRIOS
+===================================== -->
+
+<section
+
+    class="page"
+
+    id="reports">
+
+
+<div class="page-header">
+
+
+<div>
+
+    <div class="greeting">
+
+        DADOS E ACOMPANHAMENTO
+
+    </div>
+
+
+    <h1 class="page-title">
+
+        Relatórios
+
+    </h1>
+
+
+    <p class="page-description">
+
+        Acompanhe os dados das avaliações realizadas.
+
+    </p>
+
+</div>
+
+
+<button
+
+    class="primary-button"
+
+    onclick="generateReport()">
+
+    ↓ Gerar relatório
+
+</button>
+
+
+</div>
+
+
+<div class="metrics">
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon green">
+
+    ✓
+
+</div>
+
+
+<div class="metric-label">
+
+    Risco baixo
+
+</div>
+
+
+<div class="metric-number">
+
+    278
+
+</div>
+
+
+<div class="metric-trend">
+
+    81% das avaliações
+
+</div>
+
+
+</div>
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon orange">
+
+    !
+
+</div>
+
+
+<div class="metric-label">
+
+    Risco moderado
+
+</div>
+
+
+<div class="metric-number">
+
+    49
+
+</div>
+
+
+<div class="metric-label">
+
+    Necessitam acompanhamento
+
+</div>
+
+
+</div>
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon purple">
+
+    ⚠
+
+</div>
+
+
+<div class="metric-label">
+
+    Risco alto
+
+</div>
+
+
+<div class="metric-number">
+
+    15
+
+</div>
+
+
+<div class="metric-warning">
+
+    Requerem atenção
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="content-card">
+
+
+<h2 class="section-title">
+
+    Banco de dados do projeto
+
+</h2>
+
+
+<p class="page-description">
+
+    A plataforma poderá futuramente ser conectada a conjuntos públicos de imagens dermatológicas para desenvolvimento e validação de modelos computacionais.
+
+</p>
+
+
+<br>
+
+
+<div class="patient-list">
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    H
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>HAM10000</strong>
+
+    <span>Dataset público para pesquisa em classificação de lesões cutâneas.</span>
+
+</div>
+
+
+<span class="risk-badge risk-low">
+
+    Referência
+
+</span>
+
+
+</div>
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    I
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>ISIC Archive</strong>
+
+    <span>Acervo público de imagens dermatológicas para pesquisa.</span>
+
+</div>
+
+
+<span class="risk-badge risk-low">
+
+    Referência
+
+</span>
+
+
+</div>
+
+
+<div class="patient-row">
+
+
+<div class="patient-avatar">
+
+    F
+
+</div>
+
+
+<div class="patient-info">
+
+    <strong>Fitzpatrick17k</strong>
+
+    <span>Base relevante para avaliar diversidade de tons de pele e possíveis vieses.</span>
+
+</div>
+
+
+<span class="risk-badge risk-low">
+
+    Referência
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+</div>
+
+
+<!-- =====================================
+     MODAL DE NOVA AVALIAÇÃO
+===================================== -->
+
+<div
+
+    class="modal-overlay"
+
+    id="evaluationModal">
+
+
+<div class="modal">
+
+
+<div class="modal-header">
+
+
+<div>
+
+    <h2>Nova avaliação</h2>
+
+    <p>
+
+        Identifique o paciente e adicione uma imagem da lesão.
+
+    </p>
+
+</div>
+
+
+<button
+
+    class="close-button"
+
+    onclick="closeEvaluation()">
+
+    ×
+
+</button>
+
+
+</div>
+
+
+<div class="form-group">
+
+
+<label>
+
+    Paciente
+
+</label>
+
+
+<select id="patientSelect">
+
+
+<option>
+
+    Maria da Silva
+
+</option>
+
+
+<option>
+
+    João Pereira
+
+</option>
+
+
+<option>
+
+    Ana Souza
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+<div class="form-group">
+
+
+<label>
+
+    Imagem da lesão
+
+</label>
+
+
+<div
+
+    class="upload-area"
+
+    id="uploadArea"
+
+    onclick="document.getElementById('imageInput').click()">
+
+
+<div class="upload-icon">
+
+    ◎
+
+</div>
+
+
+<strong>
+
+    Clique para selecionar uma imagem
+
+</strong>
+
+
+<span>
+
+    ou arraste uma imagem para esta área
+
+</span>
+
+
+<span>
+
+    JPG, PNG ou WEBP
+
+</span>
+
+
+<input
+
+    type="file"
+
+    id="imageInput"
+
+    accept="image/*"
+
+
+>
+
+
+</div>
+
+
+<div
+
+    class="image-preview"
+
+    id="imagePreview">
+
+
+<img
+
+    id="previewImage"
+
+    alt="Preview da lesão"
+
+
+>
+
+
+<button
+
+    class="remove-image"
+
+    onclick="removeImage()">
+
+
+    Remover imagem
+
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+<div class="modal-footer">
+
+
+<button
+
+    class="secondary-button"
+
+    onclick="closeEvaluation()">
+
+
+    Cancelar
+
+
+</button>
+
+
+<button
+
+    class="primary-button"
+
+    id="analyzeButton"
+
+    onclick="startAnalysis()">
+
+
+    Continuar para análise
+
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================
+     MODAL PACIENTE
+===================================== -->
+
+<div
+
+    class="modal-overlay"
+
+    id="patientModal">
+
+
+<div class="modal">
+
+
+<div class="modal-header">
+
+
+<div>
+
+    <h2>Adicionar paciente</h2>
+
+    <p>
+
+        Cadastre os dados básicos para acompanhamento.
+
+    </p>
+
+</div>
+
+
+<button
+
+    class="close-button"
+
+    onclick="closePatientModal()">
+
+    ×
+
+</button>
+
+
+</div>
+
+
+<div class="form-group">
+
+
+<label>
+
+    Nome completo
+
+</label>
+
+
+<input
+
+    type="text"
+
+    id="newPatientName"
+
+    placeholder="Digite o nome do paciente"
+
+
+>
+
+
+</div>
+
+
+<div class="form-group">
+
+
+<label>
+
+    Data de nascimento
+
+</label>
+
+
+<input
+
+    type="date"
+
+
+>
+
+
+</div>
+
+
+<div class="form-group">
+
+
+<label>
+
+    Identificador interno
+
+</label>
+
+
+<input
+
+    type="text"
+
+    placeholder="Ex.: PAC-001"
+
+
+>
+
+
+</div>
+
+
+<div class="modal-footer">
+
+
+<button
+
+    class="secondary-button"
+
+    onclick="closePatientModal()">
+
+
+    Cancelar
+
+
+</button>
+
+
+<button
+
+    class="primary-button"
+
+    onclick="savePatient()">
+
+
+    Salvar paciente
+
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================
+     TELA COMPLETA DE ANÁLISE
+===================================== -->
+
+<div
+
+    class="analysis-screen"
+
+    id="analysisScreen">
+
+
+<div class="analysis-container">
+
+
+<header class="analysis-header">
+
+
+<div>
+
+
+<button
+
+    class="back-button"
+
+    onclick="closeAnalysisScreen()">
+
+
+    ← Voltar
+
+
+</button>
+
+
+<div class="analysis-title">
+
+
+<span class="analysis-label">
+
+    NOVA AVALIAÇÃO
+
+</span>
+
+
+<h2>
+
+    Análise da lesão
+
+</h2>
+
+
+<p>
+
+    Avaliação visual e acompanhamento da evolução.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="analysis-patient">
+
+
+<div class="patient-avatar">
+
+    M
+
+</div>
+
+
+<div>
+
+
+<strong id="analysisPatientName">
+
+    Maria da Silva
+
+</strong>
+
+
+<small>
+
+    Avaliação iniciada hoje
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<!-- PROCESSAMENTO -->
+
+
+<div
+
+    class="processing-state"
+
+    id="processingState">
+
+
+<div class="processing-circle">
+
+    <span>✦</span>
+
+</div>
+
+
+<h3>
+
+    Analisando imagem...
+
+</h3>
+
+
+<p>
+
+    O Pele+ está processando a imagem e preparando os dados para avaliação.
+
+</p>
+
+
+<div class="processing-steps">
+
+
+<div class="processing-step completed">
+
+    ✓ Imagem recebida
+
+</div>
+
+
+<div class="processing-step active">
+
+    ◌ Analisando características
+
+</div>
+
+
+<div class="processing-step">
+
+    ○ Preparando resultado
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- RESULTADO -->
+
+
+<div
+
+    class="result-state"
+
+    id="resultState">
+
+
+<div class="result-hero">
+
+
+<div>
+
+
+<div class="result-image-placeholder">
+
+
+<div class="mock-lesion-large"></div>
+
+
+</div>
+
+
+<div class="image-caption">
+
+
+<span>
+
+    Imagem analisada
+
+</span>
+
+
+<small>
+
+    Avaliação atual
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+<div class="result-main">
+
+
+<span class="result-overline">
+
+    RESULTADO DA TRIAGEM
+
+</span>
+
+
+<div class="risk-result">
+
+
+<div class="risk-indicator">
+
+    ✓
+
+</div>
+
+
+<div>
+
+
+<h1>
+
+    Risco baixo
+
+</h1>
+
+
+<p>
+
+    Não foram identificadas características que indiquem alta prioridade nesta avaliação.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="result-disclaimer">
+
+
+<span>
+
+    ⓘ
+
+</span>
+
+
+<p>
+
+    Este resultado é uma estimativa de triagem e não substitui a avaliação de um profissional de saúde.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- CARACTERÍSTICAS -->
+
+
+<div class="analysis-section">
+
+
+<div class="section-heading">
+
+
+<div>
+
+
+<span class="section-label">
+
+    ANÁLISE VISUAL
+
+</span>
+
+
+<h3>
+
+    Características observadas
+
+</h3>
+
+
+</div>
+
+
+<span class="analysis-status">
+
+    ✓ Avaliação concluída
+
+</span>
+
+
+</div>
+
+
+<div class="characteristics-grid">
+
+
+<div class="characteristic-card">
+
+
+<div class="characteristic-icon">
+
+    ✓
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Assimetria
+
+</strong>
+
+
+<span>
+
+    Baixa
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+<div class="characteristic-card">
+
+
+<div class="characteristic-icon">
+
+    ✓
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Bordas
+
+</strong>
+
+
+<span>
+
+    Regulares
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+<div class="characteristic-card">
+
+
+<div class="characteristic-icon">
+
+    ✓
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Coloração
+
+</strong>
+
+
+<span>
+
+    Homogênea
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+<div class="characteristic-card">
+
+
+<div class="characteristic-icon">
+
+    ✓
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Diâmetro
+
+</strong>
+
+
+<span>
+
+    &lt; 6 mm
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- EVOLUÇÃO -->
+
+
+<div class="analysis-section">
+
+
+<div class="section-heading">
+
+
+<div>
+
+
+<span class="section-label">
+
+    ACOMPANHAMENTO
+
+</span>
+
+
+<h3>
+
+    Evolução da lesão
+
+</h3>
+
+
+</div>
+
+
+<button
+
+    class="outline-button"
+
+    onclick="addPreviousImage()">
+
+
+    ＋ Adicionar imagem anterior
+
+</button>
+
+
+</div>
+
+
+<div class="evolution-timeline">
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-image">
+
+
+<div class="mock-lesion-small"></div>
+
+
+</div>
+
+
+<strong>
+
+    Hoje
+
+</strong>
+
+
+<span>
+
+    Avaliação atual
+
+</span>
+
+
+</div>
+
+
+<div class="timeline-line"></div>
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-image">
+
+
+<div class="mock-lesion-small"></div>
+
+
+</div>
+
+
+<strong>
+
+    24/04/2026
+
+</strong>
+
+
+<span>
+
+    Avaliação anterior
+
+</span>
+
+
+</div>
+
+
+<div class="timeline-line"></div>
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-image">
+
+
+<div class="mock-lesion-small"></div>
+
+
+</div>
+
+
+<strong>
+
+    10/04/2026
+
+</strong>
+
+
+<span>
+
+    Primeira avaliação
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+<div class="evolution-message">
+
+
+<span>
+
+    ↗
+
+</span>
+
+
+<p>
+
+
+<strong>
+
+    Sem alterações significativas detectadas
+
+</strong>
+
+
+A lesão apresenta estabilidade em comparação com avaliações anteriores.
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<!-- RECOMENDAÇÕES -->
+
+
+<div class="analysis-section">
+
+
+<div class="section-heading">
+
+
+<div>
+
+
+<span class="section-label">
+
+    PRÓXIMOS PASSOS
+
+</span>
+
+
+<h3>
+
+    Recomendações de acompanhamento
+
+</h3>
+
+
+</div>
+
+
+</div>
+
+
+<div class="recommendations-grid">
+
+
+<div class="recommendation-card">
+
+
+<div class="recommendation-number">
+
+    01
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Continue acompanhando
+
+</strong>
+
+
+<p>
+
+    Registre novas imagens para comparar possíveis alterações ao longo do tempo.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="recommendation-card">
+
+
+<div class="recommendation-number">
+
+    02
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Próxima avaliação
+
+</strong>
+
+
+<p>
+
+    Considere realizar um novo acompanhamento conforme orientação do profissional de saúde.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="recommendation-card">
+
+
+<div class="recommendation-number">
+
+    03
+
+</div>
+
+
+<div>
+
+
+<strong>
+
+    Observe mudanças
+
+</strong>
+
+
+<p>
+
+    Procure avaliação profissional caso observe mudanças rápidas na lesão.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="analysis-footer">
+
+
+<button
+
+    class="secondary-button"
+
+    onclick="closeAnalysisScreen()">
+
+
+    Fechar avaliação
+
+</button>
+
+
+<button
+
+    class="primary-button"
+
+    onclick="generateReport()">
+
+
+    ↓ Gerar relatório
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   TROCAR ABAS
+========================================= */
+
+
+function changePage(pageName) {
+
+
+    const pages = document.querySelectorAll(".page");
+
+
+    const buttons = document.querySelectorAll(".nav-item");
+
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    buttons.forEach(function(button) {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const selectedPage = document.getElementById(pageName);
+
+
+    const selectedButton = document.querySelector(
+
+        '[data-page="' + pageName + '"]'
+
+    );
+
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+
+    if (selectedButton) {
+
+        selectedButton.classList.add("active");
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+
+}
+
+
+/* =========================================
+   NOVA AVALIAÇÃO
+========================================= */
+
+
+function openEvaluation() {
+
+
+    document
+
+        .getElementById("evaluationModal")
+
+        .classList.add("show");
+
+
+}
+
+
+function closeEvaluation() {
+
+
+    document
+
+        .getElementById("evaluationModal")
+
+        .classList.remove("show");
+
+
+}
+
+
+/* =========================================
+   UPLOAD DA IMAGEM
+========================================= */
+
+
+const imageInput = document.getElementById("imageInput");
+
+
+const uploadArea = document.getElementById("uploadArea");
+
+
+const imagePreview = document.getElementById("imagePreview");
+
+
+const previewImage = document.getElementById("previewImage");
+
+
+imageInput.addEventListener(
+
+    "change",
+
+    function(event) {
+
+
+        const file = event.target.files[0];
+
+
+        if (!file) return;
+
+
+        if (!file.type.startsWith("image/")) {
+
+
+            alert("Selecione uma imagem válida.");
+
+
+            return;
+
+
+        }
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function(event) {
+
+
+            previewImage.src = event.target.result;
+
+
+            uploadArea.style.display = "none";
+
+
+            imagePreview.style.display = "block";
+
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+
+    }
+
+
+);
+
+
+/* =========================================
+   ARRASTAR IMAGEM
+========================================= */
+
+
+uploadArea.addEventListener(
+
+    "dragover",
+
+    function(event) {
+
+
+        event.preventDefault();
+
+
+        uploadArea.classList.add("dragover");
+
+
+    }
+
+
+);
+
+
+uploadArea.addEventListener(
+
+    "dragleave",
+
+    function() {
+
+
+        uploadArea.classList.remove("dragover");
+
+
+    }
+
+
+);
+
+
+uploadArea.addEventListener(
+
+    "drop",
+
+    function(event) {
+
+
+        event.preventDefault();
+
+
+        uploadArea.classList.remove("dragover");
+
+
+        const file = event.dataTransfer.files[0];
+
+
+        if (!file) return;
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function(event) {
+
+
+            previewImage.src = event.target.result;
+
+
+            uploadArea.style.display = "none";
+
+
+            imagePreview.style.display = "block";
+
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+
+    }
+
+
+);
+
+
+/* =========================================
+   REMOVER IMAGEM
+========================================= */
+
+
+function removeImage() {
+
+
+    imageInput.value = "";
+
+
+    previewImage.src = "";
+
+
+    imagePreview.style.display = "none";
+
+
+    uploadArea.style.display = "flex";
+
+
+}
+
+
+/* =========================================
+   INICIAR ANÁLISE
+========================================= */
+
+
+function startAnalysis() {
+
+
+    const patient = document.getElementById("patientSelect").value;
+
+
+    document.getElementById(
+
+        "analysisPatientName"
+
+    ).textContent = patient;
+
+
+    closeEvaluation();
+
+
+    document
+
+        .getElementById("analysisScreen")
+
+        .classList.add("show");
+
+
+    document
+
+        .getElementById("processingState")
+
+        .style.display = "block";
+
+
+    document
+
+        .getElementById("resultState")
+
+        .style.display = "none";
+
+
+    setTimeout(function() {
+
+
+        document
+
+            .getElementById("processingState")
+
+            .style.display = "none";
+
+
+        document
+
+            .getElementById("resultState")
+
+            .style.display = "block";
+
+
+    }, 2800);
+
+
+}
+
+
+/* =========================================
+   FECHAR ANÁLISE
+========================================= */
+
+
+function closeAnalysisScreen() {
+
+
+    document
+
+        .getElementById("analysisScreen")
+
+        .classList.remove("show");
+
+
+}
+
+
+/* =========================================
+   PACIENTE
+========================================= */
+
+
+function openPatientModal() {
+
+
+    document
+
+        .getElementById("patientModal")
+
+        .classList.add("show");
+
+
+}
+
+
+function closePatientModal() {
+
+
+    document
+
+        .getElementById("patientModal")
+
+        .classList.remove("show");
+
+
+}
+
+
+function savePatient() {
+
+
+    const name = document
+
+        .getElementById("newPatientName")
+
+        .value;
+
+
+    if (!name) {
+
+
+        alert("Digite o nome do paciente.");
+
+
+        return;
+
+
+    }
+
+
+    alert(
+
+        "Paciente " + name + " cadastrado com sucesso!"
+
+    );
+
+
+    closePatientModal();
+
+
+}
+
+
+/* =========================================
+   ANÁLISE DO HISTÓRICO
+========================================= */
+
+
+function openAnalysisFromHistory() {
+
+
+    document
+
+        .getElementById("analysisScreen")
+
+        .classList.add("show");
+
+
+    document
+
+        .getElementById("processingState")
+
+        .style.display = "none";
+
+
+    document
+
+        .getElementById("resultState")
+
+        .style.display = "block";
+
+
+}
+
+
+/* =========================================
+   RELATÓRIO
+========================================= */
+
+
+function generateReport() {
+
+
+    alert(
+
+        "Relatório preparado! A exportação em PDF será integrada na próxima etapa."
+
+    );
+
+
+}
+
+
+/* =========================================
+   IMAGEM ANTERIOR
+========================================= */
+
+
+function addPreviousImage() {
+
+
+    alert(
+
+        "Na próxima etapa, será possível adicionar imagens anteriores para comparar a evolução da lesão."
+
+    );
+
+
+}
+
+
+/* =========================================
+   PERFIL
+========================================= */
+
+
+function showProfile() {
+
+
+    alert(
+
+        "Área de perfil do profissional. Será desenvolvida na próxima etapa."
+
+    );
+
+
+}
+
+
+/* =========================================
+   ESC PARA FECHAR MODAIS
+========================================= */
+
+
+document.addEventListener(
+
+    "keydown",
+
+    function(event) {
+
+
+        if (event.key === "Escape") {
+
+
+            closeEvaluation();
+
+
+            closePatientModal();
+
+
+            closeAnalysisScreen();
+
+
+        }
+
+
+    }
+
+);
+
+
+/* =========================================
+   CLICAR FORA DO MODAL
+========================================= */
+
+
+document
+
+    .getElementById("evaluationModal")
+
+    .addEventListener(
+
+        "click",
+
+        function(event) {
+
+
+            if (event.target === this) {
+
+
+                closeEvaluation();
+
+
+            }
+
+
+        }
+
+    );
+
+
+document
+
+    .getElementById("patientModal")
+
+    .addEventListener(
+
+        "click",
+
+        function(event) {
+
+
+            if (event.target === this) {
+
+
+                closePatientModal();
+
+
+            }
+
+
+        }
+
+    );
+
+
+</script>
+
 
 </body>
 
