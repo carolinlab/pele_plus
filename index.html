@@ -931,6 +931,608 @@
         </div>
 
     </div>
+    <!-- =====================================
+     TELA COMPLETA DE ANÁLISE
+===================================== -->
+
+<div class="analysis-screen" id="analysisScreen">
+
+    <div class="analysis-container">
+
+        <header class="analysis-header">
+
+            <div>
+
+                <button
+                    class="back-button"
+                    onclick="closeAnalysisScreen()">
+
+                    ← Voltar
+
+                </button>
+
+                <div class="analysis-title">
+
+                    <span class="analysis-label">
+                        NOVA AVALIAÇÃO
+                    </span>
+
+                    <h2>Análise da lesão</h2>
+
+                    <p>
+                        Avaliação visual e acompanhamento da evolução.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analysis-patient">
+
+                <div class="patient-avatar">
+                    M
+                </div>
+
+                <div>
+
+                    <strong>Maria da Silva</strong>
+
+                    <small>
+                        Avaliação iniciada hoje
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PROCESSAMENTO -->
+
+        <div
+            class="processing-state"
+            id="processingState">
+
+            <div class="processing-animation">
+
+                <div class="processing-circle">
+
+                    <span>✦</span>
+
+                </div>
+
+            </div>
+
+
+            <h3>Analisando imagem...</h3>
+
+            <p>
+
+                O Pele+ está processando a imagem e preparando
+                os dados para avaliação.
+
+            </p>
+
+
+            <div class="processing-steps">
+
+                <div class="processing-step completed">
+
+                    <span>✓</span>
+
+                    Imagem recebida
+
+                </div>
+
+
+                <div class="processing-step active">
+
+                    <span>◌</span>
+
+                    Analisando características
+
+                </div>
+
+
+                <div class="processing-step">
+
+                    <span>○</span>
+
+                    Preparando resultado
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+
+        <div
+            class="result-state"
+            id="resultState">
+
+
+            <!-- RESULTADO PRINCIPAL -->
+
+            <div class="result-hero">
+
+                <div class="result-image-area">
+
+                    <div class="result-image-placeholder">
+
+                        <div class="mock-lesion-large"></div>
+
+                    </div>
+
+
+                    <div class="image-caption">
+
+                        <span>
+
+                            Imagem analisada
+
+                        </span>
+
+                        <small>
+
+                            Capturada em 21/07/2026
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-main">
+
+                    <span class="result-overline">
+
+                        RESULTADO DA TRIAGEM
+
+                    </span>
+
+
+                    <div class="risk-result low-risk">
+
+                        <div class="risk-indicator">
+
+                            ✓
+
+                        </div>
+
+
+                        <div>
+
+                            <h1>Risco baixo</h1>
+
+                            <p>
+
+                                Não foram identificadas características
+                                que indiquem alta prioridade nesta avaliação.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-disclaimer">
+
+                        <span>ⓘ</span>
+
+                        <p>
+
+                            Este resultado é uma estimativa de triagem
+                            e não substitui a avaliação de um profissional
+                            de saúde.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARACTERÍSTICAS -->
+
+            <div class="analysis-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+
+                            ANÁLISE VISUAL
+
+                        </span>
+
+                        <h3>Características observadas</h3>
+
+                    </div>
+
+                    <span class="analysis-status">
+
+                        ✓ Avaliação concluída
+
+                    </span>
+
+                </div>
+
+
+                <div class="characteristics-grid">
+
+
+                    <div class="characteristic-card">
+
+                        <div class="characteristic-icon green">
+
+                            ✓
+
+                        </div>
+
+                        <div>
+
+                            <strong>Assimetria</strong>
+
+                            <span>
+
+                                Baixa
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="characteristic-card">
+
+                        <div class="characteristic-icon green">
+
+                            ✓
+
+                        </div>
+
+                        <div>
+
+                            <strong>Bordas</strong>
+
+                            <span>
+
+                                Regulares
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="characteristic-card">
+
+                        <div class="characteristic-icon green">
+
+                            ✓
+
+                        </div>
+
+                        <div>
+
+                            <strong>Coloração</strong>
+
+                            <span>
+
+                                Homogênea
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="characteristic-card">
+
+                        <div class="characteristic-icon green">
+
+                            ✓
+
+                        </div>
+
+                        <div>
+
+                            <strong>Diâmetro</strong>
+
+                            <span>
+
+                                &lt; 6 mm
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVOLUÇÃO -->
+
+            <div class="analysis-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+
+                            ACOMPANHAMENTO
+
+                        </span>
+
+                        <h3>Evolução da lesão</h3>
+
+                    </div>
+
+
+                    <button class="outline-button">
+
+                        ＋ Adicionar imagem anterior
+
+                    </button>
+
+                </div>
+
+
+                <div class="evolution-timeline">
+
+
+                    <div class="timeline-item current">
+
+                        <div class="timeline-image">
+
+                            <div class="mock-lesion-small"></div>
+
+                        </div>
+
+                        <strong>
+
+                            Hoje
+
+                        </strong>
+
+                        <span>
+
+                            Avaliação atual
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="timeline-line"></div>
+
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-image old">
+
+                            <div class="mock-lesion-small"></div>
+
+                        </div>
+
+                        <strong>
+
+                            24/04/2026
+
+                        </strong>
+
+                        <span>
+
+                            Avaliação anterior
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="timeline-line"></div>
+
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-image old">
+
+                            <div class="mock-lesion-small"></div>
+
+                        </div>
+
+                        <strong>
+
+                            10/04/2026
+
+                        </strong>
+
+                        <span>
+
+                            Primeira avaliação
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evolution-message">
+
+                    <span>↗</span>
+
+                    <p>
+
+                        <strong>Sem alterações significativas detectadas</strong>
+
+                        A lesão apresenta estabilidade em comparação
+                        com avaliações anteriores.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECOMENDAÇÕES -->
+
+            <div class="analysis-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+
+                            PRÓXIMOS PASSOS
+
+                        </span>
+
+                        <h3>Recomendações de acompanhamento</h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recommendations-grid">
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-number">
+
+                            01
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+
+                                Continue acompanhando
+
+                            </strong>
+
+                            <p>
+
+                                Registre novas imagens para comparar
+                                possíveis alterações ao longo do tempo.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-number">
+
+                            02
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+
+                                Próxima avaliação
+
+                            </strong>
+
+                            <p>
+
+                                Considere realizar um novo acompanhamento
+                                conforme orientação do profissional de saúde.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-number">
+
+                            03
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+
+                                Observe mudanças
+
+                            </strong>
+
+                            <p>
+
+                                Procure avaliação profissional caso observe
+                                mudanças rápidas na lesão.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RODAPÉ -->
+
+            <div class="analysis-footer">
+
+                <button
+                    class="secondary-button"
+                    onclick="closeAnalysisScreen()">
+
+                    Fechar avaliação
+
+                </button>
+
+
+                <button
+                    class="primary-button"
+                    onclick="generateReport()">
+
+                    ↓ Gerar relatório
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
     <script src="script.js"></script>
