@@ -1,275 +1,226 @@
-/* =====================================
-   NAVEGAÇÃO PRINCIPAL
-===================================== */
+document.addEventListener("DOMContentLoaded", function () {
 
-const navItems = document.querySelectorAll(".nav-item");
-const pages = document.querySelectorAll(".page");
+    console.log("Pele+ carregado!");
 
-navItems.forEach(item => {
+    const navItems = document.querySelectorAll(".nav-item");
+    const pages = document.querySelectorAll(".page");
 
-    item.addEventListener("click", () => {
 
-        const pageName = item.dataset.page;
+    function changePage(pageName) {
 
-        if (pageName) {
-            changePage(pageName);
+        console.log("Mudando para:", pageName);
+
+        pages.forEach(function (page) {
+
+            page.classList.remove("active-page");
+
+        });
+
+
+        navItems.forEach(function (item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+        const page = document.getElementById(pageName);
+
+        const button = document.querySelector(
+            '[data-page="' + pageName + '"]'
+        );
+
+
+        if (page) {
+
+            page.classList.add("active-page");
+
         }
 
+
+        if (button) {
+
+            button.classList.add("active");
+
+        }
+
+    }
+
+
+    navItems.forEach(function (item) {
+
+        item.addEventListener("click", function () {
+
+            const pageName = item.getAttribute("data-page");
+
+            changePage(pageName);
+
+        });
+
     });
 
-});
 
+    /* ===============================
+       MODAL NOVA AVALIAÇÃO
+    =============================== */
 
-function changePage(pageName) {
+    const modal = document.getElementById("evaluationModal");
 
-    pages.forEach(page => {
-        page.classList.remove("active-page");
-    });
-
-
-    navItems.forEach(item => {
-        item.classList.remove("active");
-    });
-
-
-    const selectedPage = document.getElementById(pageName);
-
-    const selectedButton = document.querySelector(
-        `[data-page="${pageName}"]`
+    const openButtons = document.querySelectorAll(
+        '[onclick="openEvaluation()"]'
     );
 
 
-    if (selectedPage) {
-        selectedPage.classList.add("active-page");
-    }
+    function openEvaluation() {
 
+        if (modal) {
 
-    if (selectedButton) {
-        selectedButton.classList.add("active");
-    }
+            modal.classList.add("show");
 
-}
-
-
-/* =====================================
-   MODAL DE NOVA AVALIAÇÃO
-===================================== */
-
-const modal = document.getElementById("evaluationModal");
-
-const imageInput = document.getElementById("imageInput");
-
-const uploadArea = document.getElementById("uploadArea");
-
-const imagePreview = document.getElementById("imagePreview");
-
-const previewImage = document.getElementById("previewImage");
-
-const analyzeButton = document.getElementById("analyzeButton");
-
-
-function openEvaluation() {
-
-    modal.classList.add("show");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-function closeEvaluation() {
-
-    modal.classList.remove("show");
-
-    document.body.style.overflow = "auto";
-
-}
-
-
-function showImage(file) {
-
-    if (!file || !file.type.startsWith("image/")) {
-
-        alert("Selecione uma imagem válida.");
-
-        return;
+        }
 
     }
 
 
-    const reader = new FileReader();
+    function closeEvaluation() {
 
+        if (modal) {
 
-    reader.onload = function(event) {
+            modal.classList.remove("show");
 
-        previewImage.src = event.target.result;
-
-        uploadArea.style.display = "none";
-
-        imagePreview.style.display = "block";
-
-        analyzeButton.classList.remove("disabled");
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-}
-
-
-imageInput.addEventListener("change", function(event) {
-
-    const file = event.target.files[0];
-
-    showImage(file);
-
-});
-
-
-function removeImage() {
-
-    imageInput.value = "";
-
-    previewImage.src = "";
-
-    imagePreview.style.display = "none";
-
-    uploadArea.style.display = "block";
-
-    analyzeButton.classList.add("disabled");
-
-}
-
-
-/* =====================================
-   DRAG AND DROP
-===================================== */
-
-uploadArea.addEventListener("dragover", function(event) {
-
-    event.preventDefault();
-
-    uploadArea.classList.add("dragover");
-
-});
-
-
-uploadArea.addEventListener("dragleave", function() {
-
-    uploadArea.classList.remove("dragover");
-
-});
-
-
-uploadArea.addEventListener("drop", function(event) {
-
-    event.preventDefault();
-
-    uploadArea.classList.remove("dragover");
-
-    const file = event.dataTransfer.files[0];
-
-    showImage(file);
-
-});
-
-
-/* =====================================
-   COMEÇAR ANÁLISE
-===================================== */
-
-analyzeButton.addEventListener("click", function() {
-
-    if (analyzeButton.classList.contains("disabled")) {
-
-        return;
+        }
 
     }
 
 
-    closeEvaluation();
+    window.openEvaluation = openEvaluation;
 
-    openAnalysisScreen();
+    window.closeEvaluation = closeEvaluation;
 
-});
-
-
-/* =====================================
-   TELA DE ANÁLISE
-===================================== */
-
-function openAnalysisScreen() {
-
-    const analysisScreen = document.getElementById("analysisScreen");
-
-    analysisScreen.classList.add("show");
-
-    startProcessing();
-
-}
+    window.changePage = changePage;
 
 
-function closeAnalysisScreen() {
+    /* ===============================
+       BOTÃO NOVA AVALIAÇÃO
+    =============================== */
 
-    const analysisScreen = document.getElementById("analysisScreen");
+    openButtons.forEach(function (button) {
 
-    analysisScreen.classList.remove("show");
+        button.addEventListener("click", function () {
 
-}
+            openEvaluation();
 
+        });
 
-/* =====================================
-   PROCESSAMENTO SIMULADO
-===================================== */
-
-function startProcessing() {
-
-    const processingState = document.getElementById("processingState");
-
-    const resultState = document.getElementById("resultState");
-
-    processingState.style.display = "block";
-
-    resultState.style.display = "none";
+    });
 
 
-    setTimeout(() => {
+    /* ===============================
+       UPLOAD
+    =============================== */
 
-        processingState.style.display = "none";
+    const imageInput = document.getElementById("imageInput");
 
-        resultState.style.display = "block";
+    const uploadArea = document.getElementById("uploadArea");
 
-    }, 2800);
+    const imagePreview = document.getElementById("imagePreview");
 
-}
+    const previewImage = document.getElementById("previewImage");
 
-
-/* =====================================
-   GERAR RELATÓRIO
-===================================== */
-
-function generateReport() {
-
-    alert(
-        "Relatório preparado. A geração de PDF será conectada na próxima etapa."
-    );
-
-}
+    const analyzeButton = document.getElementById("analyzeButton");
 
 
-/* =====================================
-   FECHAR TELAS COM ESC
-===================================== */
+    if (imageInput) {
 
-document.addEventListener("keydown", function(event) {
+        imageInput.addEventListener("change", function (event) {
 
-    if (event.key === "Escape") {
+            const file = event.target.files[0];
 
-        closeEvaluation();
+            if (!file) return;
 
-        closeAnalysisScreen();
+
+            const reader = new FileReader();
+
+
+            reader.onload = function (event) {
+
+                previewImage.src = event.target.result;
+
+                uploadArea.style.display = "none";
+
+                imagePreview.style.display = "block";
+
+                analyzeButton.classList.remove("disabled");
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        });
 
     }
+
+
+    /* ===============================
+       CONTINUAR PARA ANÁLISE
+    =============================== */
+
+    if (analyzeButton) {
+
+        analyzeButton.addEventListener("click", function () {
+
+            if (
+                analyzeButton.classList.contains("disabled")
+            ) {
+
+                return;
+
+            }
+
+
+            closeEvaluation();
+
+
+            const analysisScreen =
+                document.getElementById("analysisScreen");
+
+
+            if (analysisScreen) {
+
+                analysisScreen.classList.add("show");
+
+            }
+
+
+            const processing =
+                document.getElementById("processingState");
+
+
+            const result =
+                document.getElementById("resultState");
+
+
+            if (processing && result) {
+
+                processing.style.display = "block";
+
+                result.style.display = "none";
+
+
+                setTimeout(function () {
+
+                    processing.style.display = "none";
+
+                    result.style.display = "block";
+
+                }, 2800);
+
+            }
+
+        });
+
+    }
+
 
 });
