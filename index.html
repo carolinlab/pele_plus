@@ -5125,7 +5125,104 @@ document
 
 
 </script>
+   /* =========================================
+   BUSCA DE PACIENTES E AVALIAÇÕES
+========================================= */
 
+function handleSearch(event) {
+
+    if (event.key !== "Enter") {
+
+        return;
+
+    }
+
+    const searchTerm = event.target.value.trim().toLowerCase();
+
+    if (!searchTerm) {
+
+        alert("Digite o nome de um paciente ou avaliação.");
+
+        return;
+
+    }
+
+    const patients = [
+
+        {
+            name: "Maria da Silva",
+            initial: "M",
+            date: "23/05/2026",
+            risk: "Risco baixo",
+            riskClass: "risk-low"
+        },
+
+        {
+            name: "João Pereira",
+            initial: "J",
+            date: "20/05/2026",
+            risk: "Risco moderado",
+            riskClass: "risk-medium"
+        },
+
+        {
+            name: "Ana Souza",
+            initial: "A",
+            date: "18/05/2026",
+            risk: "Risco alto",
+            riskClass: "risk-high"
+        }
+
+    ];
+
+
+    const result = patients.find(function(patient) {
+
+        return patient.name.toLowerCase().includes(searchTerm);
+
+    });
+
+
+    if (!result) {
+
+        alert(
+
+            "Nenhum paciente ou avaliação encontrado para: " +
+
+            event.target.value
+
+        );
+
+        return;
+
+    }
+
+
+    changePage("patients");
+
+
+    setTimeout(function() {
+
+        alert(
+
+            "Paciente encontrado: " +
+
+            result.name +
+
+            "\n\nÚltima avaliação: " +
+
+            result.date +
+
+            "\nRisco: " +
+
+            result.risk
+
+        );
+
+    }, 300);
+
+
+}
 
 </body>
 
